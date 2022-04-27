@@ -1,5 +1,7 @@
 # MotoZip
 
+> changes made by Yuriy
+
 ## Links
 
 
@@ -37,3 +39,4 @@ type ZIP = {
     //see the spec and define this type
 }
 ```
+
