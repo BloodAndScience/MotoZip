@@ -1,6 +1,7 @@
 # MotoZip
 
-> changes made by Yuriy
+~~changes made by Yuriy~~
+> changes made by Albert
 
 ## Links
 
