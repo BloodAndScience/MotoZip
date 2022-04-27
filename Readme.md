@@ -17,7 +17,7 @@ Our Motoko ZIP project based on the **IC** bounty.
 - [ ] Make Unit tests
 - [ ] Pass unity test
 - [ ] Get the money
-
+- [ ] Yay!
 
 ## Interface 
 
