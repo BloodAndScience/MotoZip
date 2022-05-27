@@ -14,6 +14,9 @@ Our Motoko ZIP project based on the **IC** bounty.
 ## Roadmap
 
 - [x] Set up project
+- [x] Project Roadmap
+- [ ] DEFLATE Algo Reaserch
+- [ ] Basic architecutre
 - [ ] Make Unit tests
 - [ ] Pass unity test
 - [ ] Get the money
