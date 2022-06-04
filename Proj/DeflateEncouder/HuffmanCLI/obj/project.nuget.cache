@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "NNOsA1lPvC8cFAkgicICs5JMw92Ja1ZnIjryQuhM0cogygm6//2JLeo9kaAzqRk503SiUXBCFbSFF/E4xClqNQ==",
+  "success": true,
+  "projectFilePath": "B:\\Git\\MotoZip\\Proj\\DeflateEncouder\\HuffmanCLI\\HuffmanCLI.csproj",
+  "expectedPackageFiles": [
+    "D:\\Users\\admin\\.nuget\\packages\\dotnetty.common\\0.7.2\\dotnetty.common.0.7.2.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "D:\\Users\\admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

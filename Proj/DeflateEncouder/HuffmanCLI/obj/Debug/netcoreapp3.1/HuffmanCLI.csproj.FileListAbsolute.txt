@@ -1,0 +1,16 @@
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.exe
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.deps.json
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.runtimeconfig.json
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.runtimeconfig.dev.json
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.dll
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanCLI.pdb
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanEncoding.dll
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\bin\Debug\netcoreapp3.1\HuffmanEncoding.pdb
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.csproj.AssemblyReference.cache
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.AssemblyInfoInputs.cache
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.AssemblyInfo.cs
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.csproj.CoreCompileInputs.cache
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.csproj.CopyComplete
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.dll
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.pdb
+B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanCLI\obj\Debug\netcoreapp3.1\HuffmanCLI.genruntimeconfig.cache
