@@ -1,9 +1,0 @@
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\bin\Debug\netcoreapp3.1\HuffmanEncoding.deps.json
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\bin\Debug\netcoreapp3.1\HuffmanEncoding.dll
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\bin\Debug\netcoreapp3.1\HuffmanEncoding.pdb
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.csproj.AssemblyReference.cache
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.AssemblyInfoInputs.cache
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.AssemblyInfo.cs
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.csproj.CoreCompileInputs.cache
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.dll
-B:\Git\MotoZip\Proj\DeflateEncouder\HuffmanEncoding\obj\Debug\netcoreapp3.1\HuffmanEncoding.pdb
