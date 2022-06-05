@@ -96,7 +96,28 @@ namespace HuffmanEncoding
 
         public string Decode(string text)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            for (int i = _prefix.Length+1; i <text.Length;)
+            {
+
+                var node = _root;
+                while (node.Left!=null&&node.Right!=null)
+                {
+                    if (text[i] == '0')
+                        node = node.Left;
+                    else
+                        node = node.Right;
+
+                    i++;
+
+                }
+
+                sb.Append(node.Value); 
+
+            }
+
+            return sb.ToString();
+
         }
 
         public int Compare(Node x, Node y)
