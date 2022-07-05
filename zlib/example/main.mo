@@ -1,5 +1,3 @@
-
-
 import Writer "mo:color/Writer";
 import TextStyle "mo:color/TextStyle";
 import Debug "mo:base/Debug";
