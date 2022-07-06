@@ -10,6 +10,9 @@ import Map "mo:base/HashMap";
 import Debug "mo:base/Debug";
 
 module {
+
+        public func crc32Table():Buffer<Char>{}
+
         func Count(input:Text):Map.HashMap<Char, Nat> {
         let counter = Map.HashMap<Char, Nat>(0, Char.equal, Char.toNat32);
 
@@ -34,8 +37,7 @@ module {
 
     public func Encode(input:Text):Text{
         
-
-        let counter = Count(input);
+let counter = Count(input);
         //ToText(counter); 
         for ( e in counter.entries())
         {
