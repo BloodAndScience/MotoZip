@@ -7,11 +7,13 @@ import Nat "mo:base/Nat";
 import O "mo:base/Order";
 import Buffer "mo:base/Buffer";
 import Map "mo:base/HashMap";
+import Array "mo:base/Array"
 import Debug "mo:base/Debug";
 
 module {
 
-        public func crc32Table():Buffer<Char>{}
+        public func crc32Table():Array<Char>{
+        }
 
         func Count(input:Text):Map.HashMap<Char, Nat> {
         let counter = Map.HashMap<Char, Nat>(0, Char.equal, Char.toNat32);
