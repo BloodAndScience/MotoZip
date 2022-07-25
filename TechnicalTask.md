@@ -6,5 +6,6 @@
 - How should Minimal Valuable Product look like?
 
 CLI in motoko
+gzipstat in Motoko
 
 
