@@ -12,25 +12,43 @@ Okay so let's try to do it by prinicpal **FAKE IT TILL U MAKE IT**
 
 ## Questions
 
-- [ ] Roadmap of Features? 
+- [] Roadmap of Features? 
 
-
-
-## Todo
-
+## Features 
 
 - [ ] Huffman encoding 
 - [ ] Tries
 - [ ] File HEADERS
 - [ ] Mostat
-
 - [ ] Create code that creates gzip file with DEFLATE blocks of uncompressed data.
 
+## Sprint 0 : GzipStat
 
-##  Baby steps
+17:00 
 
-- [ ] Create gzip file
-- [ ] Analyze it with gzstat 
+- [ ] Create static values
+
+~~18:30~~ 19:00
+
+- [ ] Bit Stream
+- [ ] Motoko Read from File
+    - json-motoko reading from file and lib
+
+20:00 
+
+- [ ] OutputLZBuffer
+
+
+21:00 
+
+### Someday
+
+- [ ] argparser
+
+## Sprint 1 : Create uncompressed GZIP
+	
+## Sprint 2 : Create compressed GZIP
+
 
 ## Critical parts 
 

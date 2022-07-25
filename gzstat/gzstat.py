@@ -304,20 +304,6 @@ def code_lengths_to_code_table(code_lengths):
     return code_table
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
 def decode_uncompressed(stream, output_buffer):
     # Type 00: Block is uncompressed data
     # Flush to a byte boundary (Type 00 only)
