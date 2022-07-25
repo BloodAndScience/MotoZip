@@ -11,8 +11,17 @@ let lc:Nat = GZS.length_code_ranges[9][2];
 let dc:Nat = GZS.distance_code_ranges[0][0];
 
 
-let codes = GZS.getLegthCodes();
-let code:LengthCode = codes.get(267);
+let codes = GZS.getLegthCodes().get(267);
+
+ var code:GZS.LengthCode =  switch (codes) {
+        case null  { {
+            lowerBound=0;
+            numBits=0;
+        };
+            };
+        case (?w) { w};
+    };
+
 
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
@@ -22,7 +31,7 @@ let suite = S.suite("Gzip Stat", [
         S.test("Array of distance", dc, M.equals(T.nat(0))),
 
         S.test("Length Code NumBit", code.numBits, M.equals(T.nat(1))),
-        S.test("Length Code Base lower bound", code.lowerBound, M.equals(T.nat(5))),
+        S.test("Length Code Base lower bound", code.lowerBound, M.equals(T.nat(15))),
 
         S.test("5 is greater than three", 5, M.greaterThan<Nat>(3)),
     ])

@@ -75,6 +75,7 @@ public type LengthCode = {
 };
 
 
+//todo:make class with init
 public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
 
 
@@ -84,13 +85,13 @@ public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
 
     for(i in Iter.range(0,size-1)){
 
-        var codeL =  length_code_ranges[0];
+        var codeL =  length_code_ranges[i];
 
         var lc:LengthCode = {
             numBits = codeL[1];
             lowerBound = codeL[2];
         };
-        lenghtCodes.put(i,lc);
+        lenghtCodes.put(codeL[0],lc);
     };
     return lenghtCodes;
 
