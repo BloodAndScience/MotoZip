@@ -69,33 +69,44 @@ public let length_code_ranges = [
             [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
 ];
 
+
+
+
+//todo:make class with init
+class WhateverCounter(init : Nat) {
+  var c = init;
+  public func inc() : Nat { c += 1; c };
+  public func reset() { c := init };
+};
+
+//#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
+
+
 public type LengthCode = {
     numBits:Nat;
     lowerBound:Nat;
 };
 
-
-//todo:make class with init
-public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
+    public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
 
 
-    let lenghtCodes = HashMap.HashMap<Nat,LengthCode>(0,Nat.equal, Hash.hash);
+        let lenghtCodes = HashMap.HashMap<Nat,LengthCode>(0,Nat.equal, Hash.hash);
 
-    let size = length_code_ranges.size();
+        let size = length_code_ranges.size();
 
-    for(i in Iter.range(0,size-1)){
+        for(i in Iter.range(0,size-1)){
 
-        var codeL =  length_code_ranges[i];
+            var codeL =  length_code_ranges[i];
 
-        var lc:LengthCode = {
-            numBits = codeL[1];
-            lowerBound = codeL[2];
+            var lc:LengthCode = {
+                numBits = codeL[1];
+                lowerBound = codeL[2];
+            };
+            lenghtCodes.put(codeL[0],lc);
         };
-        lenghtCodes.put(codeL[0],lc);
-    };
-    return lenghtCodes;
+        return lenghtCodes;
+    }; 
 
-};  
 
 //# Compact representation of the distance code value (0-31), distance range and number
 //# of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
@@ -108,19 +119,22 @@ public let distance_code_ranges = [
             [25,11,6145,8192], [26,12,8193,12288], [27,12,12289,16384], [28,13,16385,24576], [29,13,24577,32768],
     ];
 
-//#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
+//#Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
+public type DistanceCode = {
+    numBits:Nat;
+    lowerBound:Nat;
+};
 
-  
 
-
-/*
-length_codes = {}
-
-#Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
-distance_codes = {}
+/*distance_codes = {}
 for code, num_bits, lower_bound, upper_bound in distance_code_ranges:
     for i in range(lower_bound, upper_bound+1):
         distance_codes[code] = (num_bits,lower_bound)
+
+
+
+
+
 
 
 
