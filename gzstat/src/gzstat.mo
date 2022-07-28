@@ -71,21 +71,23 @@ public let length_code_ranges = [
 
 
 
-
+public type LengthCode = {
+    numBits:Nat;
+    lowerBound:Nat;
+};
 //todo:make class with init
 class WhateverCounter(init : Nat) {
   var c = init;
   public func inc() : Nat { c += 1; c };
   public func reset() { c := init };
+  public func GetLowBountry(index:Nat):LengthCode{
+
+  };
 };
 
 //#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
 
 
-public type LengthCode = {
-    numBits:Nat;
-    lowerBound:Nat;
-};
 
     public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
 
