@@ -101,7 +101,7 @@ public class LenCodeLib() {
     }; 
     
     public func GetLowBountry(index:Nat):LengthCode{
-        return ourLenghtCodes[index];
+        return ourLenghtCodes.get(index);
     };
 
 };
