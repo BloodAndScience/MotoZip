@@ -58,16 +58,6 @@ public let compression_methods = [
  "deflate"//[8]
 ];
 
-// Compact representation of the length code value (257-285), length range and number
-// of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
-public let length_code_ranges = [
-            [257,0,3,3],     [258,0,4,4],     [259,0,5,5],     [260,0,6,6],     [261,0,7,7],
-            [262,0,8,8],     [263,0,9,9],     [264,0,10,10],   [265,1,11,12],   [266,1,13,14],
-            [267,1,15,16],   [268,1,17,18],   [269,2,19,22],   [270,2,23,26],   [271,2,27,30],
-            [272,2,31,34],   [273,3,35,42],   [274,3,43,50],   [275,3,51,58],   [276,3,59,66],
-            [277,4,67,82],   [278,4,83,98],   [279,4,99,114],  [280,4,115,130], [281,5,131,162], 
-            [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
-];
 
 
 
@@ -75,22 +65,23 @@ public type LengthCode = {
     numBits:Nat;
     lowerBound:Nat;
 };
+
 //todo:make class with init
-class WhateverCounter(init : Nat) {
-  var c = init;
-  public func inc() : Nat { c += 1; c };
-  public func reset() { c := init };
-  public func GetLowBountry(index:Nat):LengthCode{
-
-  };
-};
-
-//#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
-
-
-
-    public func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
-
+public class LenCodeLib() {
+    
+    public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
+    // Compact representation of the length code value (257-285), length range and number
+    // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
+    private let length_code_ranges = [
+            [257,0,3,3],     [258,0,4,4],     [259,0,5,5],     [260,0,6,6],     [261,0,7,7],
+            [262,0,8,8],     [263,0,9,9],     [264,0,10,10],   [265,1,11,12],   [266,1,13,14],
+            [267,1,15,16],   [268,1,17,18],   [269,2,19,22],   [270,2,23,26],   [271,2,27,30],
+            [272,2,31,34],   [273,3,35,42],   [274,3,43,50],   [275,3,51,58],   [276,3,59,66],
+            [277,4,67,82],   [278,4,83,98],   [279,4,99,114],  [280,4,115,130], [281,5,131,162], 
+            [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
+    ];
+  
+    private func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
 
         let lenghtCodes = HashMap.HashMap<Nat,LengthCode>(0,Nat.equal, Hash.hash);
 
@@ -101,13 +92,25 @@ class WhateverCounter(init : Nat) {
             var codeL =  length_code_ranges[i];
 
             var lc:LengthCode = {
-                numBits = codeL[1];
-                lowerBound = codeL[2];
+                    numBits = codeL[1];
+                    lowerBound = codeL[2];
+                };
+                lenghtCodes.put(codeL[0],lc);
             };
-            lenghtCodes.put(codeL[0],lc);
-        };
         return lenghtCodes;
     }; 
+    
+    public func GetLowBountry(index:Nat):LengthCode{
+        return ourLenghtCodes[index];
+    };
+
+};
+
+//#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
+// Dosent really metter
+
+
+   
 
 
 //# Compact representation of the distance code value (0-31), distance range and number
