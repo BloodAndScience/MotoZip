@@ -91,7 +91,7 @@ public class LenCodeLib() {
     private func InitLengthCode():[LengthCode]{
 
         let size = length_code_ranges.size();
-        let lengthCodes = Buffer.Buffer<LengthCode>(size));
+        let lengthCodes = Buffer.Buffer<LengthCode>(size);
 
 
         for(i in Iter.range(0,size-1)){
@@ -151,7 +151,26 @@ public class LenCodeLib() {
 
 //# Compact representation of the distance code value (0-31), distance range and number
 //# of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
-public let distance_code_ranges = [
+
+
+//#Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
+public type DistanceCode = {
+    numBits:Nat;
+    lowerBound:Nat;
+};
+
+public class DistCodeLib() {
+    
+    private let ourDistanceCodes<DistanceCode>:Buffer = 29;
+
+    public func GetDistanceCode(code:Nat):DistanceCode{
+        return ourDistanceCodes[code];
+    }
+ 
+    //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
+    // Compact representation of the length code value (257-285), length range and number
+    // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
+    public let distance_code_ranges = [
             [0,0,1,1],         [1,0,2,2],          [2,0,3,3],           [3,0,4,4],           [4,1,5,6],
             [5,1,7,8],         [6,2,9,12],         [7,2,13,16],         [8,3,17,24],         [9,3,25,32],
             [10,4,33,48],      [11,4,49,64],       [12,5,65,96],        [13,5,97,128],       [14,6,129,192],
@@ -160,12 +179,48 @@ public let distance_code_ranges = [
             [25,11,6145,8192], [26,12,8193,12288], [27,12,12289,16384], [28,13,16385,24576], [29,13,24577,32768],
     ];
 
-//#Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
-public type DistanceCode = {
-    numBits:Nat;
-    lowerBound:Nat;
-};
+    private func InitDistanceCode(){
+        let size = distance_code_ranges.size();
+            for i in Iter.range(0,size-1){
+                var codeL =  distance_code_ranges[i];
 
+                var lc:DistanceCode = {
+                    numBits = codeL[1];
+                    lowerBound = codeL[2];
+                };
+                
+                ourDistanceCodes.add(lc);
+            };
+            }
+    }
+    /*
+    private func InitDistanceCode():[DistanceCode]{
+
+        let size = distance_code_ranges.size();
+        let distanceCodes = Buffer.Buffer<DistanceCode>(size);
+
+
+        for(i in Iter.range(0,size-1)){
+
+            var codeL =  distance_code_ranges[i];
+
+            var lc:DistanceCode = {
+                    numBits = codeL[1];
+                    lowerBound = codeL[2];
+                };
+                distanceCodes.put(codeL[0],lc);
+            };
+
+        return c.ToArray();
+    }
+
+  
+    public func GetLowBountry(index:Nat):DistanceCode{
+        let r = ourDistanceCodes.get(index);
+        return switch r { case (null) DistanceCode{0,0}; …; case _ en }
+    };
+        */
+};
 
 /*distance_codes = {}
 for code, num_bits, lower_bound, upper_bound in distance_code_ranges:
