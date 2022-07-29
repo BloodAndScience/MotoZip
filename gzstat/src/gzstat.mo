@@ -82,13 +82,12 @@ public class LenCodeLib() {
             [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
     ];
     
-    private let LengthCodes:[LengthCode];
 
  
-   private func InitLengthCode():[LengthCode]{
+   private func InitLengthCode():[LengthCode] {
 
         let size = length_code_ranges.size();
-        let lcs = Buffer.Buffer<LengthCode>(size));
+        let lcs = Buffer.Buffer<LengthCode>(size);
 
 
         for(i in Iter.range(0,size-1)){
@@ -102,13 +101,15 @@ public class LenCodeLib() {
                 lcs.add(lc);
             };
 
-        return lcs.ToArray();
-    }
+        return lcs.toArray();
+    };
+
+    private let LengthCodes:[LengthCode]= InitLengthCode();
 
     public func GetLengthCode(code:Nat):LengthCode{
         let ourCode = code-257;
         return LengthCodes[ourCode];
-    }
+    };
 
   
 
@@ -136,13 +137,17 @@ public class LenCodeLib() {
         return lenghtCodes;
     }; 
     */
+    /*
     
     public func GetLowBountry(index:Nat):LengthCode{
         let r = ourLenghtCodes.get(index);
         return switch r { case (null) LengthCode{0,0}; …; case _ en }
     };
 
+
 };
+
+*/
 
 //#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
 // Dosent really metter
@@ -195,4 +200,5 @@ class BuildHuffmanException(Exception):
     pass
 
 */
+}
 }
