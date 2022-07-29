@@ -58,8 +58,18 @@ public type LengthCode = {
     lowerBound:Nat;
 };
 
+// Class to contain Distance code numBits,lowerBound
+public type DistanceCode = {
+    numBits:Nat;
+    lowerBound:Nat;
+};
+
 //todo:make class with init
-public class LenCodeLib() {
+public class CodeLib() {
+
+////////////////////////////////
+//          Length Codes
+////////////////////////////////
 
      //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
     // Compact representation of the length code value (257-285), length range and number
@@ -72,8 +82,6 @@ public class LenCodeLib() {
             [277,4,67,82],   [278,4,83,98],   [279,4,99,114],  [280,4,115,130], [281,5,131,162], 
             [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
     ];
-    
-
  
    private func InitLengthCode():[LengthCode] {
 
@@ -102,35 +110,10 @@ public class LenCodeLib() {
         return LengthCodes[ourCode];
     };
 
-  
+////////////////////////////////
+//          Distance Codes
+////////////////////////////////
 
-    public func GetLowBountry(index:Nat):LengthCode{
-        let r = ourLenghtCodes.get(index);
-        return switch r { case (null) LengthCode{0,0}; …; case _ en }
-    };
-
-
-};
-*/
-
-
-//Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
-public type DistanceCode = {
-    numBits:Nat;
-    lowerBound:Nat;
-};
-
-
-public class DistCodeLib() {
-    
-    private let ourDistanceCodes<DistanceCode>:Buffer = 29;
-
-    public func GetDistanceCode(code:Nat):DistanceCode{
-        return ourDistanceCodes[code];
-    }
- 
-    // Compact representation of the length code value (257-285), length range and number
-    // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
     public let distance_code_ranges = [
             [0,0,1,1],         [1,0,2,2],          [2,0,3,3],           [3,0,4,4],           [4,1,5,6],
             [5,1,7,8],         [6,2,9,12],         [7,2,13,16],         [8,3,17,24],         [9,3,25,32],
@@ -140,7 +123,12 @@ public class DistCodeLib() {
             [25,11,6145,8192], [26,12,8193,12288], [27,12,12289,16384], [28,13,16385,24576], [29,13,24577,32768],
     ];
 
-    private func InitDistanceCode(){
+    private func InitDistanceCodes():[DistanceCode]
+    {
+
+        let size = distance_code_ranges.size();
+        let dcs = Buffer.Buffer<LengthCode>(size);
+        /*
         let size = distance_code_ranges.size();
             for i in Iter.range(0,size-1){
                 var codeL =  distance_code_ranges[i];
@@ -151,8 +139,17 @@ public class DistCodeLib() {
                 };
                 
                 ourDistanceCodes.add(lc);
-            };
-            }
-    }
-}
+        };
+        */
+        return dcs.toArray();
+    };
+
+    private let ourDistanceCodes:[DistanceCode] = InitDistanceCodes();
+
+    public func GetDistanceCode(code:Nat):DistanceCode{
+
+        return ourDistanceCodes[code];
+    };
+    
+    };
 }

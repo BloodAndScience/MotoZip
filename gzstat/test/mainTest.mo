@@ -22,11 +22,13 @@ var code:GZS.LengthCode =  switch (codes) {
         case (?w) { w};
 };*/
 
-let lenCode:GZS.LengthCode = GZS.LenCodeLib().GetLengthCode(267);
+let lenCode:GZS.LengthCode = GZS.CodeLib().GetLengthCode(267);
+let distCode:GZS.LengthCode = GZS.CodeLib().GetDistanceCode(15);
 
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
-        S.test("",lenCode.lowerBound,M.equals(T.nat(15)))
+        S.test("",lenCode.lowerBound,M.equals(T.nat(15))),
+        S.test("",distCode.lowerBound,M.equals(T.nat(193)))
 
     /*  S.test("read GZIP header", IsFirstTest, M.equals(T.bool(true))),
         S.test("Comrpession method deflate", cm, M.equals(T.text("deflate"))),
