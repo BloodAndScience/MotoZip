@@ -1,24 +1,17 @@
 /*
-# gzstat.py
-# 
-# Utility for analyzing the structure of .gz files.
-# For the most verbose output, use
-#   python gzstat.py --print-block-codes --decode-blocks < your_input_file.gz
-#
-#
-# Most of the implementation is based on the two RFC documents that describe .gz
-# files and DEFLATE compression:
-#   - https://tools.ietf.org/html/rfc1951
-#   - https://tools.ietf.org/html/rfc1952
-#
-#
-# Some details were determined by reverse engineering the gzip source code (https://www.gnu.org/software/gzip/).
-#
-# B. Bird - 03/12/2020
+ gzstat.mo
+ 
+ Utility for analyzing the structure of .gz files.
+ For the most verbose output, use
+   vessel gzstat.mo --print-block-codes --decode-blocks < your_input_file.gz
 
+
+ Most of the implementation is based on the two RFC documents that describe .gz
+ files and DEFLATE compression:
+   - https://tools.ietf.org/html/rfc1951
+   - https://tools.ietf.org/html/rfc1952
+ Some details were determined by reverse engineering the gzip source code (https://www.gnu.org/software/gzip/).
 */
-//import sys, collections, datetime, binascii
-
 
 import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
@@ -38,8 +31,6 @@ import Hex "mo:encoding/Hex";
 import Debug "mo:base/Debug";
 
 module {
-
-
 
 public let print_gzip_headers = true ;
 public let print_block_stats = true;
@@ -69,15 +60,8 @@ public type LengthCode = {
 
 //todo:make class with init
 public class LenCodeLib() {
-    
-    private let LengthCodes:[LengthCode];
 
-    public func GetLengthCode(code:Nat):LengthCode{
-        let ourCode = code-257;
-        return LengthCodes[ourCode];
-    }
- 
-    //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
+     //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
     // Compact representation of the length code value (257-285), length range and number
     // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
     private let length_code_ranges = [
@@ -88,10 +72,13 @@ public class LenCodeLib() {
             [277,4,67,82],   [278,4,83,98],   [279,4,99,114],  [280,4,115,130], [281,5,131,162], 
             [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
     ];
-    private func InitLengthCode():[LengthCode]{
+    
+
+ 
+   private func InitLengthCode():[LengthCode] {
 
         let size = length_code_ranges.size();
-        let lengthCodes = Buffer.Buffer<LengthCode>(size);
+        let lcs = Buffer.Buffer<LengthCode>(size);
 
 
         for(i in Iter.range(0,size-1)){
@@ -102,62 +89,37 @@ public class LenCodeLib() {
                     numBits = codeL[1];
                     lowerBound = codeL[2];
                 };
-                lenghtCodes.put(codeL[0],lc);
+                lcs.add(lc);
             };
 
-        return c.ToArray();
-    }
+        return lcs.toArray();
+    };
+
+    private let LengthCodes:[LengthCode]= InitLengthCode();
+
+    public func GetLengthCode(code:Nat):LengthCode{
+        let ourCode = code-257;
+        return LengthCodes[ourCode];
+    };
 
   
 
-    // Create array of specific size
-    // Mutable into immutable
-
-
-  /*
-    private func getLegthCodes():HashMap.HashMap<Nat,LengthCode> {
-
-        let lenghtCodes = HashMap.HashMap<Nat,LengthCode>(0,Nat.equal, Hash.hash);
-
-        let size = length_code_ranges.size();
-
-        for(i in Iter.range(0,size-1)){
-
-            var codeL =  length_code_ranges[i];
-
-            var lc:LengthCode = {
-                    numBits = codeL[1];
-                    lowerBound = codeL[2];
-                };
-                lenghtCodes.put(codeL[0],lc);
-            };
-        return lenghtCodes;
-    }; 
-    */
-    
     public func GetLowBountry(index:Nat):LengthCode{
         let r = ourLenghtCodes.get(index);
         return switch r { case (null) LengthCode{0,0}; …; case _ en }
     };
 
+
 };
-
-//#Construct a lookup table mapping length codes to (num_bits,lower_bound) pairs
-// Dosent really metter
+*/
 
 
-   
-
-
-//# Compact representation of the distance code value (0-31), distance range and number
-//# of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
-
-
-//#Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
+//Construct a lookup table mapping distance codes to (num_bits,lower_bound) pairs
 public type DistanceCode = {
     numBits:Nat;
     lowerBound:Nat;
 };
+
 
 public class DistCodeLib() {
     
@@ -167,7 +129,6 @@ public class DistCodeLib() {
         return ourDistanceCodes[code];
     }
  
-    //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
     // Compact representation of the length code value (257-285), length range and number
     // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
     public let distance_code_ranges = [
@@ -193,59 +154,5 @@ public class DistCodeLib() {
             };
             }
     }
-    /*
-    private func InitDistanceCode():[DistanceCode]{
-
-        let size = distance_code_ranges.size();
-        let distanceCodes = Buffer.Buffer<DistanceCode>(size);
-
-
-        for(i in Iter.range(0,size-1)){
-
-            var codeL =  distance_code_ranges[i];
-
-            var lc:DistanceCode = {
-                    numBits = codeL[1];
-                    lowerBound = codeL[2];
-                };
-                distanceCodes.put(codeL[0],lc);
-            };
-
-        return c.ToArray();
-    }
-
-  
-    public func GetLowBountry(index:Nat):DistanceCode{
-        let r = ourDistanceCodes.get(index);
-        return switch r { case (null) DistanceCode{0,0}; …; case _ en }
-    };
-        */
-};
-
-/*distance_codes = {}
-for code, num_bits, lower_bound, upper_bound in distance_code_ranges:
-    for i in range(lower_bound, upper_bound+1):
-        distance_codes[code] = (num_bits,lower_bound)
-
-
-
-
-
-
-
-
-def binary_string_big_endian(v, num_bits):
-    result = ''
-    for i in range(num_bits-1,-1,-1):
-        result += '1' if (v&(1<<i)) != 0 else '0'
-    return result
-
-
-class DecodingException(Exception):
-    pass
-
-class BuildHuffmanException(Exception):
-    pass
-
-*/
+}
 }
