@@ -68,7 +68,7 @@ public type DistanceCode = {
 public class CodeLib() {
 
 ////////////////////////////////
-//          Length Codes
+//        Length Codes        //
 ////////////////////////////////
 
      //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
@@ -111,7 +111,7 @@ public class CodeLib() {
     };
 
 ////////////////////////////////
-//          Distance Codes
+//       Distance Codes       //
 ////////////////////////////////
 
     public let distance_code_ranges = [
@@ -128,19 +128,18 @@ public class CodeLib() {
 
         let size = distance_code_ranges.size();
         let dcs = Buffer.Buffer<LengthCode>(size);
-        /*
-        let size = distance_code_ranges.size();
-            for i in Iter.range(0,size-1){
+        
+            for (i in Iter.range(0,size-1)){
                 var codeL =  distance_code_ranges[i];
 
-                var lc:DistanceCode = {
+                var dc:DistanceCode = {
                     numBits = codeL[1];
                     lowerBound = codeL[2];
                 };
                 
-                ourDistanceCodes.add(lc);
+                dcs.add(dc);
         };
-        */
+
         return dcs.toArray();
     };
 
@@ -153,7 +152,8 @@ public class CodeLib() {
     
     };
 
-public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
+    
+    public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
     var result:Text = "";
     // Crete resere iter in motoko
 
