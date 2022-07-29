@@ -27,6 +27,7 @@ let lenCode:GZS.LengthCode = GZS.LenCodeLib().GetLengthCode(267);
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
         S.test("",lenCode.lowerBound,M.equals(T.nat(15)))
+
     /*  S.test("read GZIP header", IsFirstTest, M.equals(T.bool(true))),
         S.test("Comrpession method deflate", cm, M.equals(T.text("deflate"))),
         S.test("Array of lenght", lc, M.equals(T.nat(13))),
