@@ -27,6 +27,7 @@ let distCode:GZS.LengthCode = GZS.CodeLib().GetDistanceCode(15);
 
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
+
         S.test("",lenCode.lowerBound,M.equals(T.nat(15))),
         S.test("",distCode.lowerBound,M.equals(T.nat(193)))
 

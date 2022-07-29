@@ -152,4 +152,19 @@ public class CodeLib() {
     };
     
     };
+
+public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
+    var result:Text = "";
+    // Crete resere iter in motoko
+
+
+    return result;
+};
+
+def binary_string_big_endian(v, num_bits):
+    result = ''
+
+    for i in range(num_bits-1,-1,-1):
+        result += '1' if (v&(1<<i)) != 0 else '0'
+    return result
 }
