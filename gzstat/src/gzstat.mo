@@ -69,15 +69,8 @@ public type LengthCode = {
 
 //todo:make class with init
 public class LenCodeLib() {
-    
-    private let LengthCodes:[LengthCode];
 
-    public func GetLengthCode(code:Nat):LengthCode{
-        let ourCode = code-257;
-        return LengthCodes[ourCode];
-    }
- 
-    //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
+     //public let ourLenghtCodes:HashMap.HashMap<Nat,LengthCode>  = getLegthCodes();
     // Compact representation of the length code value (257-285), length range and number
     // of extra bits to use in LZ77 compression (See Section 3.2.5 of RFC 1951)
     private let length_code_ranges = [
@@ -88,10 +81,14 @@ public class LenCodeLib() {
             [277,4,67,82],   [278,4,83,98],   [279,4,99,114],  [280,4,115,130], [281,5,131,162], 
             [282,5,163,194], [283,5,195,226], [284,5,227,257], [285,0,258,258]
     ];
-    private func InitLengthCode():[LengthCode]{
+    
+    private let LengthCodes:[LengthCode];
+
+ 
+   private func InitLengthCode():[LengthCode]{
 
         let size = length_code_ranges.size();
-        let lengthCodes = Buffer.Buffer<LengthCode>(size));
+        let lcs = Buffer.Buffer<LengthCode>(size));
 
 
         for(i in Iter.range(0,size-1)){
@@ -102,10 +99,15 @@ public class LenCodeLib() {
                     numBits = codeL[1];
                     lowerBound = codeL[2];
                 };
-                lenghtCodes.put(codeL[0],lc);
+                lcs.add(lc);
             };
 
-        return c.ToArray();
+        return lcs.ToArray();
+    }
+
+    public func GetLengthCode(code:Nat):LengthCode{
+        let ourCode = code-257;
+        return LengthCodes[ourCode];
     }
 
   
