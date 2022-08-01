@@ -154,15 +154,19 @@ public class CodeLib() {
 
     
     public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
-    var result:Text = "";
-    for(i in Iter.revRange(num_bits-1,0)){
-      Debug.print(debug_show(i));
+        var result:Text = "";
+        let bn:Nat32 = 1;
+        let b:Nat32 = Nat32(v);
+
+        for(i in Iter.revRange(num_bits-1,0)){
+            var c:Text = "0";
+            if((b & (bn << i)) != 0){
+               c := "1"; 
+            };
+            result += c;
+        };
+        return result;
     };
-    var n:Nat32  =1;
-    n := 4&(n << 2);
-    Debug.print(debug_show(n));
-    return result;
-};
 /*
 
 def binary_string_big_endian(v, num_bits):
