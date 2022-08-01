@@ -155,9 +155,9 @@ public class CodeLib() {
     
     public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
     var result:Text = "";
-    // Crete resere iter in motoko
-
-
+    for(i in Iter.revRange(num_bits-1,0)){
+      Debug.print(debug_show(i));
+    };
     return result;
 };
 /*

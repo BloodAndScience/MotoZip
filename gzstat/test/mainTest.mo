@@ -25,6 +25,8 @@ var code:GZS.LengthCode =  switch (codes) {
 let lenCode:GZS.LengthCode = GZS.CodeLib().GetLengthCode(267);
 let distCode:GZS.LengthCode = GZS.CodeLib().GetDistanceCode(15);
 
+let r = GZS.binaryStringBigEndian(0,10);
+
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
 
