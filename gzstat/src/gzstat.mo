@@ -13,11 +13,14 @@
  Some details were determined by reverse engineering the gzip source code (https://www.gnu.org/software/gzip/).
 */
 
+import Bool "mo:base/Bool";
 import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
-import Bool "mo:base/Bool";
-import Iter "mo:base/Iter";
+import Nat32 "mo:base/Nat32";
 import Int "mo:base/Int";
+
+import Iter "mo:base/Iter";
+
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 
@@ -157,18 +160,22 @@ public class CodeLib() {
     public func binaryStringBigEndian(v:Nat,num_bits:Nat):Text{
         var result:Text = "";
         let bn:Nat32 = 1;
-        let b:Nat32 = Nat32(v);
-
+        let b:Nat32 = Nat32.fromNat(v);
+        
         for(i in Iter.revRange(num_bits-1,0)){
 
-            let out:Nat  = Int.abs(i);
-            Debug.print(debug_show(out));
-            var c:Text = "0";
+            // Debug.print(debug_show(bn<<Nat32.fromIntWrap(i)));
+            // let textA = "Hello ";
+            // let textB = "World!";
+            // let textOut = Text.concat(textA,textB);
+            // Debug.print(debug_show(textOut));
 
-            if((b & (bn << i)) != 0){
+            var c:Text = "0";
+            
+            if((b & bn<<Nat32.fromIntWrap(i)) != 0){
                c := "1"; 
             };
-            result += c;
+            result :=Text.concat(result,c);
         };
         return result;
     };
