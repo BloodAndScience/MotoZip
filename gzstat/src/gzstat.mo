@@ -158,6 +158,9 @@ public class CodeLib() {
     for(i in Iter.revRange(num_bits-1,0)){
       Debug.print(debug_show(i));
     };
+    var n:Nat32  =1;
+    n := 4&(n << 2);
+    Debug.print(debug_show(n));
     return result;
 };
 /*
