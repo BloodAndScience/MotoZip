@@ -25,13 +25,14 @@ var code:GZS.LengthCode =  switch (codes) {
 let lenCode:GZS.LengthCode = GZS.CodeLib().GetLengthCode(267);
 let distCode:GZS.LengthCode = GZS.CodeLib().GetDistanceCode(15);
 
-let r = GZS.binaryStringBigEndian(0,10);
+let binaryString = GZS.binaryStringBigEndian(41,8);
 
 let suite = S.suite("Gzip Stat", [
     S.suite("Check static values", [
 
         S.test("",lenCode.lowerBound,M.equals(T.nat(15))),
-        S.test("",distCode.lowerBound,M.equals(T.nat(193)))
+        S.test("",distCode.lowerBound,M.equals(T.nat(193))),
+        S.test("binaryStringEnging",binaryString,M.equals(T.text("00101001")))
 
     /*  S.test("read GZIP header", IsFirstTest, M.equals(T.bool(true))),
         S.test("Comrpession method deflate", cm, M.equals(T.text("deflate"))),
