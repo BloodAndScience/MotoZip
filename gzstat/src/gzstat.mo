@@ -17,6 +17,7 @@ import Nat "mo:base/Nat";
 import Nat8 "mo:base/Nat8";
 import Bool "mo:base/Bool";
 import Iter "mo:base/Iter";
+import Int "mo:base/Int";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 
@@ -157,7 +158,7 @@ public class CodeLib() {
     var result:Text = "";
     for(i in Iter.revRange(num_bits-1,0)){
 
-      let out:Nat  = i.abs;
+      let out:Nat  = Int.abs(i);
       Debug.print(debug_show(out));
     };
     var n:Nat32  =1;
