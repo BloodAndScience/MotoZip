@@ -179,4 +179,97 @@ public class CodeLib() {
         };
         return result;
     };
+
+
+//Todo: How to define Exceptions in motoko
+
+/*
+class DecodingException(Exception):
+    pass
+
+class BuildHuffmanException(Exception):
+    pass
+*/
+
+
+//Todo Create class bitstream
+
+public calss BitStream(source_file:Text){
+
+//Todo:class initialization 
+    public func read_bit(){
+
+    };
+
+    public func read_bits(num_bits:Nat){
+
+    };
+    /*
+    def read_byte(self):
+        return self.read_bits(8)
+
+    def read_uint16_big_endian(self):
+        return (self.read_byte()<<8)|self.read_byte()
+    
+    def read_uint16_little_endian(self):
+        return self.read_byte()|(self.read_byte()<<8)
+
+    def read_uint32_big_endian(self):
+        return (self.read_byte()<<24)|(self.read_byte()<<16)|(self.read_byte()<<8)|self.read_byte()
+    
+    def read_uint32_little_endian(self):
+        return self.read_byte()|(self.read_byte()<<8)|(self.read_byte()<<16)|(self.read_byte()<<24)
+    */
+};
+
+/*
+class BitStream:
+    class EndOfStream(Exception):
+        pass
+    buffer_size = 1024 # Number of bytes to read at a time
+    def __init__(self, source_file):
+        self.input_file = source_file
+        self.working_bytes = bytes()
+        self.working_bits_read = 0 # Number of bits already read from self.working_bytes
+        self.total_bits_read = 0
+
+    def read_bit(self):
+        if self.working_bits_read//8 >= len(self.working_bytes):
+            self.working_bytes = self.input_file.read(self.buffer_size)
+            if len(self.working_bytes) == 0:
+                raise BitStream.EndOfStream
+            self.working_bits_read = 0
+        byte_idx = self.working_bits_read//8
+        bit_idx = self.working_bits_read%8
+        self.working_bits_read += 1
+        self.total_bits_read += 1
+        return (self.working_bytes[byte_idx]>>bit_idx)&1
+    def flush_to_byte(self):
+        while self.working_bits_read%8 != 0:
+            self.read_bit()
+
+
+
+    #Read a bit sequence into an int value, with the low order bits read first
+    def read_bits(self,num_bits):
+        b = 0
+        for i in range(num_bits):
+            b = b|(self.read_bit()<<i)
+        return b
+
+    def read_byte(self):
+        return self.read_bits(8)
+
+    def read_uint16_big_endian(self):
+        return (self.read_byte()<<8)|self.read_byte()
+    
+    def read_uint16_little_endian(self):
+        return self.read_byte()|(self.read_byte()<<8)
+
+    def read_uint32_big_endian(self):
+        return (self.read_byte()<<24)|(self.read_byte()<<16)|(self.read_byte()<<8)|self.read_byte()
+    
+    def read_uint32_little_endian(self):
+        return self.read_byte()|(self.read_byte()<<8)|(self.read_byte()<<16)|(self.read_byte()<<24)
+        */
 }
